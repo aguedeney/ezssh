@@ -19,8 +19,8 @@ Benefits and features of this script:<br>
  7. You can pass in a non-standard port (optional)<br>
  8. Support for DSA, RSA, and ECDSA<br>
  9. CYGWIN_NT supported along with Window's space character in username<br>
-    .ssh/config trick to support other methods for usernames with spaces<br>
-
+    (Use .ssh/config trick to support other methods for usernames with spaces)<br>
+<br>
 Important Notes and Conditions:<br>
  1.  The first time this script runs you'll need to login with your password.<br>
      However, the second time you should just be able to login password-less.<br>
@@ -33,5 +33,4 @@ Important Notes and Conditions:<br>
      fault of this script.<br>
  5.  Ubuntu requires /bin/bash not /bin/sh (defaults to Dash) - Yes, this is non-standard.<br>
      Technically, /bin/sh points to bourne shell similar implementation of bourne again shell (Bash).<br>
-<br>
 Author: Alan Guedeney<br>
