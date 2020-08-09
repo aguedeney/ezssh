@@ -1,8 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Filename:
 # ssh-passwordless.sh
 #
-# Automate SSH passwordless
+# Automate SSH passwordless process
+#
+# Requirement:
+# This script requires Bash (latest version possible). 
+# This script will not work with Bourne shell.
 #
 # Description:
 # Benefits and features of this script:
@@ -37,8 +41,8 @@
 # 4.  Some administrators have password-less turned off. Therefore, if this script does
 #     not accomplish a password-less login, see your administrator. It *may* not be the
 #     fault of this script.
-# 5.  Ubuntu requires /bin/bash not /bin/sh (defaults to Dash) - Yes, this is non-standard.
-#     Technically, /bin/sh points to bourne shell similar implementation of bourne again shell (Bash).
+# 5.  Ubuntu requires /bin/bash not /bin/sh (defaults to Dash).
+#     Technically and typically, /bin/sh points to bourne shell similar implementation of bourne again shell (Bash).
 #
 # Author: Alan Guedeney
 
