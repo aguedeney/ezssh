@@ -1,4 +1,4 @@
-# ezssh
+```
 #
 # Automate SSH passwordless process (does the ugly manual work for you)
 #
@@ -47,3 +47,4 @@
 #     Technically and typically, /bin/sh points to bourne shell similar implementation of bourne again shell (Bash).
 #
 # Author: Alan Guedeney
+```
