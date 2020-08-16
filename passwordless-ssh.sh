@@ -45,8 +45,8 @@
 # 4.  Some administrators have password-less turned off. Therefore, if this script does
 #     not accomplish a password-less login, see your administrator. It *may* not be the
 #     fault of this script.
-# 5.  Ubuntu requires /bin/bash not /bin/sh (defaults to Dash).
-#     Technically and typically, /bin/sh points to bourne shell similar implementation of bourne again shell (Bash).
+# 5.  On Ubuntu /bin/sh defaults to dash which will not work for this script.
+#     Verify that /bin/sh points to bash not bourne shell.
 #
 # Author: Alan Guedeney
 
