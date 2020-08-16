@@ -3,8 +3,8 @@
 # Automate SSH passwordless process (does the ugly manual work for you)
 #
 # Requirement:
-# This script requires Bash (latest version possible).
 # This script will not work with Bourne shell.
+# This script requires Bash (latest version possible).
 #
 # Description:
 # Benefits and features of this script:
