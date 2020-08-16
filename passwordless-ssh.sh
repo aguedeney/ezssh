@@ -2,34 +2,38 @@
 # Filename:
 # ssh-passwordless.sh
 #
-# Automate SSH passwordless process
+# Automate SSH passwordless process (does the ugly manual work for you)
 #
 # Requirement:
-# This script requires Bash (latest version possible). 
+# This script requires Bash (latest version possible).
 # This script will not work with Bourne shell.
 #
 # Description:
 # Benefits and features of this script:
-# 1. New accounts that have never had ssh password-less enabled
-# 2. Can run this script from anywhere you have access to this website.
-# 3. Deletes old entries and updates them with new ones
-# 4. Works (tested) on MacOSX, Linux, and Cygwin (Windows)
-# 5. Generates password-less keys automatically if they do not exist
-# 6. Backs-up previous existing authorized_keys file (remote machine) if one exists
-# 7. You can pass in a non-standard port (optional)
-# 8. Support for DSA, RSA, and ECDSA
-# 9. CYGWIN_NT supported along with Window's space character in username
-#    .ssh/config trick to support other methods for usernames with spaces
+# 1.  New accounts that have never had ssh password-less enabled
+# 2.  Can run this script from anywhere you have access to this website.
+# 3.  Deletes old entries and updates them with new ones
+# 4.  Works (tested) on MacOSX, Linux, and Cygwin (Windows)
+# 5.  Generates password-less keys automatically if they do not exist
+# 6.  Backs-up previous existing authorized_keys file (remote machine) if one exists
+# 7.  You can pass in a non-standard port (optional)
+# 8.  Support for DSA, RSA, and ECDSA
+# 9.  CYGWIN_NT supported along with Window's space character in username
+#     .ssh/config trick to support other methods for usernames with spaces
+# 10. Custom port assignment is supported (see example below)
 #
 # Usage examples:
 # Linux
 # wget -qLO- http://bit.ly/ezssh | bash -s "<username@mybox.aws.com>"
+# wget -qLO- http://bit.ly/ezssh | bash -s 2222 "<username@mybox.aws.com>"
 # wget -qLO- --no-check-certificate https://bit.ly/ezssh | bash -s username@10.0.1.1
-# wget -qLO- --no-check-certificate https://bit.ly/ezssh | bash -s "<username@mybox.aws.com>"
+# wget -qLO- --no-check-certificate https://bit.ly/ezssh | bash -s "username@mybox.aws.com"
+# wget -qLO- --no-check-certificate https://bit.ly/ezssh | bash -s 2222 "username@mybox.aws.com"
 #
 # MacOS X
 # curl -sLo- http://bit.ly/ezssh | bash -s username@10.0.1.1
-# curl -sLo- http://bit.ly/ezssh | bash -s "<username@mybox.aws.com>"
+# curl -sLo- http://bit.ly/ezssh | bash -s "username@mybox.aws.com"
+# curl -sLo- http://bit.ly/ezssh | bash -s 2222 "username@mybox.aws.com"
 #
 # Notes and Conditions:
 # 1.  The first time this script runs you'll need to login with your password.
@@ -72,8 +76,8 @@ if [ $# -eq 2 ]; then
     SSH_REMOTE_USER="$2"
 # 1 argument is passed, standard port
 else
-    # Else it's a standard port
-    SSH_REMOTE_PORT="22"
+    # Else it's the standard port 22
+    SSH_REMOTE_PORT=${SSH_REMOTE_PORT:=22}
     SSH_REMOTE_USER="$1"
 fi
 # If argument is not passed, let's make sure the SSH_REMOTE_USER environment variable
@@ -104,7 +108,7 @@ DSA_KEY=$(cat "${DSA_PUB_LOCATION}" | cut -d' ' -f 2)
 RSA_KEY=$(cat "${RSA_PUB_LOCATION}" | cut -d' ' -f 2)
 # Some bash shells required this value to be an exported env. variable
 export DSA_KEY RSA_KEY SSH_LOCAL_USER AUTH_KEYS_FILE
-ssh "$SSH_REMOTE_USER" '/bin/bash -s' << EOF
+ssh -p ${SSH_REMOTE_PORT} "$SSH_REMOTE_USER" '/bin/bash -s' << EOF
 # Keep track of return codes in an array stack for debugging LINENUMBER[RETURNCODE]
 RETURNCODES=()
 function rc() {
