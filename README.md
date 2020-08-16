@@ -18,7 +18,7 @@
 # 8.  Support for DSA, RSA, and ECDSA
 # 9.  CYGWIN_NT supported along with Window's space character in username
 #     .ssh/config trick to support other methods for usernames with spaces
-# 10. Custom port assignment is supported (see example below)
+# 10. Custom port assignment is supported (see example below), otherwise default port 22 is used.
 #
 # Usage examples:
 # Linux
