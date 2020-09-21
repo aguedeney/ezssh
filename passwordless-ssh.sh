@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-# Filename:
-# ssh-passwordless.sh
 #
 # Automate SSH passwordless process (does the ugly manual work for you)
 #
 # Requirement:
-# This script requires Bash (latest version possible).
 # This script will not work with Bourne shell.
+# This script requires Bash (latest version possible).
 #
 # Description:
 # Benefits and features of this script:
@@ -20,20 +18,20 @@
 # 8.  Support for DSA, RSA, and ECDSA
 # 9.  CYGWIN_NT supported along with Window's space character in username
 #     .ssh/config trick to support other methods for usernames with spaces
-# 10. Custom port assignment is supported (see example below)
+# 10. Custom port assignment is supported (see example below), otherwise default port 22 is used.
 #
 # Usage examples:
 # Linux
-# wget -qLO- http://bit.ly/ezssh | bash -s "<username@mybox.aws.com>"
-# wget -qLO- http://bit.ly/ezssh | bash -s 2222 "<username@mybox.aws.com>"
-# wget -qLO- --no-check-certificate https://bit.ly/ezssh | bash -s username@10.0.1.1
-# wget -qLO- --no-check-certificate https://bit.ly/ezssh | bash -s "username@mybox.aws.com"
-# wget -qLO- --no-check-certificate https://bit.ly/ezssh | bash -s 2222 "username@mybox.aws.com"
+# wget -qLO- http://bit.ly/ezsshpass | bash -s "<your username>@<ip address or hostname"
+# wget -qLO- http://bit.ly/ezsshpass | bash -s 2222 "<your username>@<ip address or hostname"
+# wget -qLO- --no-check-certificate https://bit.ly/ezsshpass | bash -s "<your username>@<ip address or hostname"
+# wget -qLO- --no-check-certificate https://bit.ly/ezsshpass | bash -s "<your username>@<ip address or hostname"
+# wget -qLO- --no-check-certificate https://bit.ly/ezsshpass | bash -s 2222 "<your username>@<ip address or hostname"
 #
 # MacOS X
-# curl -sLo- http://bit.ly/ezssh | bash -s username@10.0.1.1
-# curl -sLo- http://bit.ly/ezssh | bash -s "username@mybox.aws.com"
-# curl -sLo- http://bit.ly/ezssh | bash -s 2222 "username@mybox.aws.com"
+# curl -sLo- http://bit.ly/ezsshpass | bash -s "<your username>@<ip address or hostname"
+# curl -sLo- http://bit.ly/ezsshpass | bash -s "<your username>@<ip address or hostname"
+# curl -sLo- http://bit.ly/ezsshpass | bash -s 2222 "<your username>@<ip address or hostname"
 #
 # Notes and Conditions:
 # 1.  The first time this script runs you'll need to login with your password.
@@ -47,6 +45,9 @@
 #     fault of this script.
 # 5.  On Ubuntu /bin/sh defaults to dash which will not work for this script.
 #     Verify that /bin/sh points to bash not bourne shell.
+#
+# DISCLAIMER: Use at your own risk. We are not responsible for loss or damages of any kind
+#             in the use of this script or indirect programs or applications.
 #
 # Author: Alan Guedeney
 
