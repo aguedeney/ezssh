@@ -3,8 +3,9 @@
 # Automate SSH passwordless process (does the ugly manual work for you)
 #
 # Requirement:
-# This script will not work with Bourne shell.
 # This script requires Bash (latest version possible).
+# This script will not work in Bourne (/bin/sh).
+# BEWARE: In some older Unix/Linux based systems, /bin/sh points to bourne shell
 #
 # Description:
 # Benefits and features of this script:
@@ -46,7 +47,7 @@
 # 5.  On Ubuntu /bin/sh defaults to dash which will not work for this script.
 #     Verify that /bin/sh points to bash not bourne shell.
 #
-# DISCLAIMER: Use at your own risk. We are not responsible for loss or damages of any kind 
+# DISCLAIMER: Use at your own risk. We are not responsible for loss or damages of any kind
 #             in the use of this script or indirect programs or applications.
 #
 # Author: Alan Guedeney
