@@ -13,13 +13,14 @@
 # 3.  Deletes old entries and updates them with new ones
 # 4.  Works (tested) on MacOSX, Linux, and Cygwin (Windows)
 # 5.  Generates password-less keys automatically if they do not exist
-# 6.  Backs-up previous existing authorized_keys file (remote machine) if one exists
+# 6.  Backup previous existing authorized_keys file (remote machine) if one exists
 # 7.  You can pass in a non-standard port (optional)
 # 8.  Support for DSA, RSA, and ECDSA
-# 9.  CYGWIN_NT supported along with Window's space character in username
+# 9.  CYGWIN supported along with Window's space character in username
 #     .ssh/config trick to support other methods for usernames with spaces
 # 10. Custom port assignment is supported (see example below), otherwise default port 22 is used.
 #
+# We include the copy and paste short urls for ease of use. However, you may decide to just download the script.
 # Usage examples:
 # Linux
 # wget -qLO- http://bit.ly/ezsshpass | bash -s "<your username>@<ip address or hostname"
@@ -77,17 +78,16 @@ if [ $# -eq 2 ]; then
     SSH_REMOTE_USER="$2"
 # 1 argument is passed, standard port
 else
-    # Else it's the standard port 22
+    # Else it's the standard default port 22
     SSH_REMOTE_PORT=${SSH_REMOTE_PORT:=22}
     SSH_REMOTE_USER="$1"
 fi
-# If argument is not passed, let's make sure the SSH_REMOTE_USER environment variable
-# is set at least.
+# SSH_REMOTE_USER must be set
 if [ -z "$SSH_REMOTE_USER" ]; then
    echo "Usage: $0 <remoteusername@remotemachine>"
    exit 1
 fi
-# ssh must be installed otherwise exit with fail exit code
+# ssh package (usual location) must be installed otherwise we notify user
 if [ ! -f /usr/bin/ssh-keygen ]; then
    echo "Could not find ssh-keygen ... Please install ssh."
    exit 1
